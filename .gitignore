@@ -1,5 +1,6 @@
 # Local secrets / config
 config.js
+.mcp.json
 .env
 .env.*
 !.env.example
@@ -19,3 +20,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 .claude/
+
+# Playwright MCP test artifacts (may contain secrets from form fills)
+.playwright-mcp/
+leadfinder-final.png

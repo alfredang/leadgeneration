@@ -258,6 +258,7 @@ tbody td.empty { color: var(--muted); }
   z-index: 100;
   backdrop-filter: blur(2px);
 }
+.overlay[hidden] { display: none; }
 
 .spinner {
   width: 44px;

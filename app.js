@@ -124,7 +124,7 @@
     const loc = parseList(location);
     if (ind.length) payload.company_industry = ind;
     if (job.length) payload.contact_job_title = job;
-    if (loc.length) payload.contact_location = loc;
+    if (loc.length) payload.contact_location = loc.map((s) => s.toLowerCase());
     return payload;
   }
 
