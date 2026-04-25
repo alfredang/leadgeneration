@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lead Finder &middot; Apify</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Lead Finder</h1>
+    <button type="button" id="settingsToggle" class="ghost" aria-expanded="false" aria-controls="settings">
+      Settings
+    </button>
+  </header>
+
+  <main>
+    <section id="settings" class="card settings" hidden>
+      <h2>Apify API token</h2>
+      <p class="muted">
+        Paste your token from
+        <a href="https://console.apify.com/account/integrations" target="_blank" rel="noopener">
+          console.apify.com &rarr; Integrations
+        </a>.
+        It is saved only in this browser&rsquo;s localStorage and sent only to api.apify.com.
+      </p>
+      <div class="row">
+        <input type="password" id="tokenInput" placeholder="apify_api_..." autocomplete="off" spellcheck="false" />
+        <button type="button" id="saveToken" class="primary">Save</button>
+        <button type="button" id="clearToken" class="ghost">Clear</button>
+      </div>
+      <p id="tokenStatus" class="status"></p>
+    </section>
+
+    <section class="card">
+      <form id="searchForm" novalidate>
+        <div class="grid">
+          <label>
+            <span>Sector / industry</span>
+            <input type="text" id="sector" placeholder="SaaS, Fintech, Healthcare" />
+            <small class="muted">Comma-separated. Maps to Apify <code>company_industry</code>.</small>
+          </label>
+
+          <label>
+            <span>Job roles</span>
+            <input type="text" id="roles" placeholder="Marketing Manager, Head of Growth, CTO" />
+            <small class="muted">Comma-separated. Maps to <code>contact_job_title</code>.</small>
+          </label>
+
+          <label>
+            <span>Location <em>(optional)</em></span>
+            <input type="text" id="location" placeholder="United States, Singapore" />
+            <small class="muted">Comma-separated countries / regions / cities.</small>
+          </label>
+
+          <label class="narrow">
+            <span>Max results</span>
+            <input type="number" id="maxResults" value="50" min="1" max="500" step="1" />
+            <small class="muted">Hard cap 500 to protect your credits.</small>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="submitBtn" class="primary">Find leads</button>
+          <label class="demo-toggle">
+            <input type="checkbox" id="demoMode" checked />
+            <span>Demo mode (mock data, no Apify call)</span>
+          </label>
+          <span id="status" class="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="card results" id="resultsCard" hidden>
+      <div class="results-header">
+        <h2><span id="resultCount">0</span> leads</h2>
+        <input type="search" id="filterInput" placeholder="Filter results&hellip;" />
+      </div>
+      <div class="table-wrap">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th data-key="name" data-type="string">Name</th>
+              <th data-key="title" data-type="string">Title</th>
+              <th data-key="company" data-type="string">Company</th>
+              <th data-key="industry" data-type="string">Industry</th>
+              <th data-key="location" data-type="string">Location</th>
+              <th data-key="email" data-type="string">Email</th>
+              <th data-key="phone" data-type="string">Phone</th>
+              <th data-key="linkedin" data-type="string">LinkedIn</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p id="emptyState" class="muted" hidden>No rows match your filter.</p>
+    </section>
+
+    <div id="overlay" class="overlay" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Searching Apify&hellip; this can take 1&ndash;5 minutes.</p>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
