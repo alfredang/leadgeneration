@@ -8,6 +8,8 @@ Enter a sector / industry, target job roles, and an optional location, and Lead 
 
 The whole app is four files in the project root — no bundler, no framework, no server-side code. Open the page, paste an Apify token (or use Demo mode), and search.
 
+The UI is styled as an editorial *Field Dossier* — cream paper, deep ink, vermilion accent — with Fraunces, JetBrains Mono and Geist served from Google Fonts.
+
 ## Features
 
 - Search by `company_industry`, `contact_job_title`, and `contact_location` (comma-separated lists)
@@ -24,6 +26,7 @@ The whole app is four files in the project root — no bundler, no framework, no
 - HTML5, CSS3 (handwritten, CSS variables, no preprocessor)
 - Vanilla JavaScript (single IIFE, no modules, no framework)
 - [Apify API](https://docs.apify.com/api/v2) — actor `code_crafter~leads-finder`, `run-sync-get-dataset-items` endpoint
+- Google Fonts — Fraunces (serif display), JetBrains Mono (data), Geist (UI)
 - GitHub Pages (deploy target)
 
 ## Setup
